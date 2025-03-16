@@ -38,6 +38,9 @@ class ANN:
             sys.stdout.flush()
     
     def train(self, X, y):
+        """
+        Trénování neuronové sítě.
+        """
         for epoch in range(self.epochs):
             # Forward propagace
             hidden_input = np.dot(X, self.W1) + self.b1
@@ -49,7 +52,7 @@ class ANN:
             sse = np.sum(1/2 * (np.square(y - final_output)))
             
             # Zpětná propagace
-            d_output = (y - final_output) * self.sigmoid_derivative(final_output)
+            d_output = (y - final_output) * self.sigmoid_derivative(final_output) # výpočet gradientu
             d_hidden = d_output.dot(self.W2.T) * self.sigmoid_derivative(hidden_output)
             
             # Aktualizace vah
@@ -58,10 +61,8 @@ class ANN:
             self.W1 += X.T.dot(d_hidden) * self.learning_rate
             self.b1 += np.sum(d_hidden, axis=0, keepdims=True) * self.learning_rate
             
-            # Uložení historie
+            # Uložení historie a výpis průběhu učení
             self.history.log(sse, [self.W1, self.W2], [self.b1, self.b2], [d_output, d_hidden])
-            
-            # Výpis chyby každých 1000 epoch
             self.print_learning_progress(epoch, sse)
     
     def predict(self, X):
