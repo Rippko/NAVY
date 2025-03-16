@@ -23,7 +23,7 @@ for _ in range(100):
             w += learning_rate * labels[i] * x_vec
             b += learning_rate * labels[i]
 
-# Vizualizace
+
 plt.figure(figsize=(8,6))
 plt.axhline(0, color='black', linewidth=0.5)
 plt.axvline(0, color='black', linewidth=0.5)
@@ -37,6 +37,5 @@ plt.plot(x_line, y_line, 'k-', label="y = 3x + 2")
 # Barvy bodů podle klasifikace
 colors = ['red' if label == 1 else 'blue' for label in labels]
 plt.scatter(X, Y, c=colors, edgecolors='black')
-
 plt.legend()
 plt.show()
