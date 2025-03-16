@@ -107,7 +107,8 @@ if __name__ == "__main__":
     predictions = ann.predict(X)
     
     for i, (x_val, pred) in enumerate(zip(X, predictions)):
-        final_pred = 1 if pred >= 0.5 else 0
+        final_pred = int(np.round(pred[0]))
+        print(final_pred)
         print(f"Input values: {x_val}")
         print(f"Predicted value: {pred[0]:.9f}")
         print(f"Final predict: {final_pred}\n")
