@@ -90,6 +90,7 @@ kde:
 - $\lfloor \rfloor$ označuje funkci floor (zaokrouhlení dolů)
 
 Pro naši implementaci s mřížkou 5×5:
+
 $$ M_{max} = \left\lfloor\frac{25}{2\log_2(25)}\right\rfloor $$
 
 > **Poznámka**: V původní definici Hopfieldovy sítě se často používá přirozený logaritmus $\ln$, 
