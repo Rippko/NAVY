@@ -1,7 +1,7 @@
 # Find the Cheese - Q-Learning
 
 ## Přehled
-Tato aplikace poskytuje interaktivní způsob, jak pochopit Q-learning tím, že vizualizuje, jak se agent (chodec) učí navigovat v prostředí mřížky, aby dosáhl cíle (sýr) a zároveň se vyhnul překážkám (díry). Proces učení je zobrazován v reálném čase, což umožňuje uživatelům pozorovat, jak se agentovo rozhodování časem zlepšuje.
+Tato aplikace interaktivně vizualizuje proces učení Q-learningu tím, že ukazuje, jak se agent (chodec) postupně učí navigovat v mřížkovém prostředí, aby dosáhl cíle (sýr) a vyhnul se překážkám (díry). Učení probíhá v reálném čase, což umožňuje uživatelům sledovat, jak se agentovo rozhodování postupně zlepšuje.
 
 ## Funkce
 
