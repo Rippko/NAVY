@@ -174,3 +174,11 @@ Strukturu odměn lze upravit změnou:
 - `self.move_reward`: Odměna za přesun na prázdnou buňku
 - `self.hole_reward`: Odměna za pád do díry
 - `self.cheese_reward`: Odměna za nalezení sýra
+
+## **Použití**
+```python
+python main.py # pro spuštění chodu programu
+```
+
+## **requirements.txt**
+- Všechny potřebné knihovny pro spuštění lze nalézt zde.
