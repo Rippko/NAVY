@@ -72,9 +72,9 @@ class HopfieldNetwork:
 - Síť se učí podle **Hebbova pravidla** a ukládá vzory do váhové matice.  
 - Síť je schopná obnovovat vzor buď **synchronně** nebo **asynchronně**.
 - Proces se zastaví, pokud se vzor přestane měnit respektive je obnoven správně nebo po dosažení maximálního počtu iterací.
-- Síť umí opravovat správně vzory pokud se nepřekročí stanovená hranice pro maximální počet uložených vzorů dle:
+- Síť umí opravovat správně vzory pokud se nepřekročí stanovená hranice pro maximální počet uložených vzorů:
 
-# Maximální kapacita sítě
+### Maximální kapacita sítě
 
 ```python
 max_patterns = np.floor(network.size / (2 * math.log2(network.size)))
