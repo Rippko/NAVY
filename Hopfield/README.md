@@ -72,6 +72,16 @@ class HopfieldNetwork:
 - Síť se učí podle **Hebbova pravidla** a ukládá vzory do váhové matice.  
 - Síť obnovuje vzor buď **synchronně** (všechny neurony se aktualizují současně), nebo **asynchronně** (neurony se aktualizují jeden po druhém).
 - Proces se zastaví, pokud se vzor přestane měnit respektive je obnoven správně nebo po dosažení maximálního počtu iterací.
+- Síť umí opravovat správně vzory pokud se nepřekročí stanovená hranice pro maximální počet uložených vzorů dle:
+
+```python
+max_patterns = np.floor(network.size / (2 * math.log2(network.size)))
+```
+
+$$ M_{max} = \left\lfloor\frac{N}{2\ln(N)}\right\rfloor $$
+
+
+
 
 ---
 
