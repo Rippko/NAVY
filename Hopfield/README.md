@@ -74,14 +74,26 @@ class HopfieldNetwork:
 - Proces se zastaví, pokud se vzor přestane měnit respektive je obnoven správně nebo po dosažení maximálního počtu iterací.
 - Síť umí opravovat správně vzory pokud se nepřekročí stanovená hranice pro maximální počet uložených vzorů dle:
 
+# Maximální kapacita sítě
+
 ```python
 max_patterns = np.floor(network.size / (2 * math.log2(network.size)))
 ```
 
-$$ M_{max} = \left\lfloor\frac{N}{2\ln(N)}\right\rfloor $$
+Matematicky vyjádřeno:
 
+$$ M_{max} = \left\lfloor\frac{N}{2\log_2(N)}\right\rfloor $$
 
+kde:
+- $M_{max}$ je maximální počet vzorů, které síť dokáže spolehlivě uložit a fungovat korektně
+- $N$ je počet neuronů v síti (v našem případě N = 25 pro mřížku 5×5)
+- $\lfloor \rfloor$ označuje funkci floor (zaokrouhlení dolů)
 
+Pro naši implementaci s mřížkou 5×5:
+$$ M_{max} = \left\lfloor\frac{25}{2\log_2(25)}\right\rfloor $$
+
+> **Poznámka**: V původní definici Hopfieldovy sítě se často používá přirozený logaritmus $\ln$, 
+> ale v mé implementaci používám $\log_2$ dle [definice Hopfieldovy sítě](https://en.wikipedia.org/wiki/Hopfield_network).
 
 ---
 
