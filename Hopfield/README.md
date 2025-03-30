@@ -70,7 +70,7 @@ class HopfieldNetwork:
 
 ## 4. **Shrnutí**
 - Síť se učí podle **Hebbova pravidla** a ukládá vzory do váhové matice.  
-- Síť obnovuje vzor buď **synchronně** (všechny neurony se aktualizují současně), nebo **asynchronně** (neurony se aktualizují jeden po druhém).
+- Síť je schopná obnovovat vzor buď **synchronně** nebo **asynchronně**.
 - Proces se zastaví, pokud se vzor přestane měnit respektive je obnoven správně nebo po dosažení maximálního počtu iterací.
 - Síť umí opravovat správně vzory pokud se nepřekročí stanovená hranice pro maximální počet uložených vzorů dle:
 
