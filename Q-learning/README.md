@@ -1,7 +1,6 @@
 # Find the Cheese - Q-Learning
 
 ## Přehled
-
 Tato aplikace poskytuje interaktivní způsob, jak pochopit Q-learning tím, že vizualizuje, jak se agent (chodec) učí navigovat v prostředí mřížky, aby dosáhl cíle (sýr) a zároveň se vyhnul překážkám (díry). Proces učení je zobrazován v reálném čase, což umožňuje uživatelům pozorovat, jak se agentovo rozhodování časem zlepšuje.
 
 ## Funkce
@@ -64,7 +63,7 @@ def update_q_table(self, current_pos, action_idx, next_pos, reward):
     self.q_table[current_pos[0], current_pos[1], action_idx] = new_q
 ```
 
-Toto implementuje vzorec Q-learningu:
+Tato funkce implementuje vzorec Q-learningu:
 
 Q(s,a) ← Q(s,a) + α[r + γ max<sub>a'</sub> Q(s',a') - Q(s,a)]
 
