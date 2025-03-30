@@ -163,7 +163,7 @@ Tato cesta je poté vizualizována, aby se demonstrovalo, co se agent naučil.
 ## Pokročilé nastavení
 ### Úprava parametrů učení
 
-Můžete experimentovat s různými parametry učení úpravou následujících proměnných:
+Můžeme experimentovat s různými parametry učení úpravou následujících proměnných:
 - `self.alpha`: Rychlost učení (jak rychle nové informace přepisují staré)
 - `self.gamma`: Diskontní faktor (důležitost budoucích odměn)
 - `self.epsilon`, `self.epsilon_decay`, `self.epsilon_min`: Řídí strategii průzkumu
