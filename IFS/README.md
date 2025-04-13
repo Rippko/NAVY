@@ -10,7 +10,22 @@ Tento kód využívá konceptu **IFS**, kde se opakovaně aplikuje náhodně zvo
 
 ### `iterate(num_iterations, starting_point=None)`
 
-Tato metoda je jádrem generování fraktálu.
+```python
+def iterate(self, num_iterations, starting_point=None):
+    current_point = np.zeros(3) if starting_point is None else np.array(starting_point)
+    
+    points = np.zeros((num_iterations + 1, 3))
+    points[0] = current_point
+    
+    transform_indices = np.random.randint(0, len(self.transforms), num_iterations)
+    
+    for i in range(num_iterations):
+        A, b = self.transforms[transform_indices[i]]
+        current_point = A @ current_point + b
+        points[i+1] = current_point
+        
+    self.points = points
+   ```
 
 - **Co dělá:** 
   Opakovaně aplikuje náhodně vybrané afinní transformace (lineární + posun) na počáteční bod, čímž vytváří body fraktálu.
@@ -27,7 +42,22 @@ Tato metoda je jádrem generování fraktálu.
 
 ### `create_model_transforms(model_params)`
 
-Tato metoda připraví transformační pravidla pro fraktál.
+```python
+def create_model_transforms(model_params):
+    transforms = []
+    for params in model_params:
+        a, b, c, d, e, f, g, h, i, j, k, l = params
+        
+        A = np.array([
+            [a, b, c],
+            [d, e, f],
+            [g, h, i]
+        ])
+        b = np.array([j, k, l])
+        transforms.append((A, b))
+    
+    return transforms
+   ```
 
 - **Co dělá:** 
   Převádí seznam parametrů modelu na konkrétní matice `A` (3×3) a vektory `b` (3×1), které se používají při generování bodů.
