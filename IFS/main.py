@@ -3,7 +3,7 @@ import plotly.graph_objects as go
 from models import all_models, model_names, model_colors
 import time
 
-class FractalFern3D:
+class FernFractal:
     def __init__(self, transforms):
         self.transforms = transforms
         self.points = []
@@ -96,7 +96,6 @@ def main():
     if custom_color.strip():
         model_color = custom_color
     
-
     try:
         size_input = input("Velikost bodů (výchozí: 1.5): ")
         point_size = float(size_input) if size_input.strip() else 1.5
@@ -105,7 +104,6 @@ def main():
     except ValueError as e:
         print(f"Neplatná velikost bodů: {e}. Použiji výchozí hodnotu 1.5.")
         point_size = 1.5
-    
 
     try:
         opacity_input = input("Průhlednost (0-1, výchozí: 0.8): ")
@@ -125,7 +123,7 @@ def main():
     print(f"\n--- Generuji model: {model_name} ---")
     
     transforms = create_model_transforms(selected_model_params)
-    fern = FractalFern3D(transforms)
+    fern = FernFractal(transforms)
     
     print(f"Generuji {num_points} bodů...")
     start_time = time.time()
