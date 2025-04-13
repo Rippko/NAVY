@@ -6,6 +6,13 @@ Tento kód využívá konceptu **IFS**, kde se opakovaně aplikuje náhodně zvo
 
 ---
 
+## Struktura
+
+- `main.py`: Hlavní soubor programu
+- `models.py`: Obsahuje definice modelů
+
+---
+
 ## Klíčové komponenty
 
 ### `iterate(num_iterations, starting_point=None)`
@@ -83,12 +90,5 @@ python main.py # pro spuštění chodu programu
 
 ## **requirements.txt**
 - Všechny potřebné knihovny pro spuštění lze nalézt zde.
-
----
-
-## Struktura
-
-- `main.py`: Hlavní soubor programu
-- `models.py`: Obsahuje definice modelů
 
 ---
