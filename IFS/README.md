@@ -22,13 +22,7 @@ Tato metoda je jádrem generování fraktálu.
 - **Jak to funguje:**
   1. Náhodně se vygeneruje pole indexů transformací.
   2. Každý index určuje, kterou transformaci použít v dané iteraci.
-  3. Body se vypočítají podle vzorce: `new_point = A @ point + b` nebo matematicky vyjádřeno níže.
-
-  $$
-    w \begin{pmatrix} x' \\ y' \\ z' \end{pmatrix} = \begin{pmatrix} a & b & c \\ d & e & f \\ g & h & i \end{pmatrix} * \begin{pmatrix} x \\ y \\ z \end{pmatrix} + \begin{pmatrix} j \\ k \\ l \end{pmatrix}
-  $$
-
-
+  3. Body se vypočítají podle vzorce: `new_point = A @ point + b`.
 ---
 
 ### `create_model_transforms(model_params)`
