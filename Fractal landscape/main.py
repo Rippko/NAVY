@@ -39,30 +39,35 @@ class FractalTerrainGenerator:
         self.fig = plt.Figure(figsize=(6, 5))
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.plot_frame)
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
-    
+
     def generate_2d_terrain(self, iterations, roughness):
-        # Začátek s přímkou (x = 0 až 1, y = 0.5)
-        points = [(0, 0.5), (1, 0.5)]
-
-        for i in range(iterations):
-            new_points = []
-            scale = roughness ** i
-
-            for j in range(len(points) - 1):
-                new_points.append(points[j])
-                mid_x = (points[j][0] + points[j+1][0]) / 2
-                mid_y = (points[j][1] + points[j+1][1]) / 2
-                displacement = random.uniform(-scale, scale)
-                new_mid_y = mid_y + displacement
-                new_points.append((mid_x, new_mid_y))
-
-            new_points.append(points[-1])
-            points = new_points
-
-        x_values = [p[0] for p in points]
-        y_values = [p[1] for p in points]
+        size = 2**iterations + 1
+        x_values = np.linspace(0, 1, size)
+        all_terrains = []
         
-        return x_values, y_values
+        for i in range(3):  # Generujeme 3 vrstvy terénu
+            current_points = [(0, 0.5), (1, 0.5)]
+            
+            for iter in range(iterations):
+                new_points = []
+                scale = roughness ** iter
+
+                for j in range(len(current_points) - 1):
+                    new_points.append(current_points[j])
+                    mid_x = (current_points[j][0] + current_points[j+1][0]) / 2
+                    mid_y = (current_points[j][1] + current_points[j+1][1]) / 2
+                    displacement = random.uniform(-scale, scale)
+                    new_mid_y = mid_y + displacement
+                    new_points.append((mid_x, new_mid_y))
+
+                new_points.append(current_points[-1])
+                current_points = new_points
+
+            height_positions = [0.7, 0.4, 0.2]  # Pozice vrstev v grafu
+            y_values = [p[1] * 0.25 + height_positions[i] for p in current_points]
+            all_terrains.append(y_values)
+        
+        return x_values, all_terrains
     
     def generate_3d_terrain(self, iterations, roughness):
         size = 2 ** iterations + 1
@@ -125,35 +130,10 @@ class FractalTerrainGenerator:
         self.fig.clear()
 
         if dimension == "2D":
-            colors = ['darkgreen', 'black', 'saddlebrown']
-            height_positions = [0.7, 0.4, 0.2]
             ax = self.fig.add_subplot(111)
-            size = 2**iterations + 1
-            x_values = np.linspace(0, 1, size)
-            all_terrains = []
+            x_values, all_terrains = self.generate_2d_terrain(iterations, roughness)
             
-            for i in range(3):
-                y_values = []
-                current_points = [(0, 0.5), (1, 0.5)]
-                
-                for iter in range(iterations):
-                    new_points = []
-                    scale = roughness ** iter
-
-                    for j in range(len(current_points) - 1):
-                        new_points.append(current_points[j])
-                        mid_x = (current_points[j][0] + current_points[j+1][0]) / 2
-                        mid_y = (current_points[j][1] + current_points[j+1][1]) / 2
-                        displacement = random.uniform(-scale, scale)
-                        new_mid_y = mid_y + displacement
-                        new_points.append((mid_x, new_mid_y))
-
-                    new_points.append(current_points[-1])
-                    current_points = new_points
-
-                y_values = [p[1] * 0.25 + height_positions[i] for p in current_points]
-                all_terrains.append(y_values)
-
+            colors = ['darkgreen', 'black', 'saddlebrown']
             for i in range(2, -1, -1):
                 y_terrain = all_terrains[i]
                 y_bottom = [0] * len(y_terrain) if i == 2 else all_terrains[i+1]
@@ -181,7 +161,7 @@ class FractalTerrainGenerator:
             y = np.linspace(0, 1, terrain.shape[1])
             X, Y = np.meshgrid(x, y)
             ax = self.fig.add_subplot(111, projection='3d')
-            height_levels = [0.3, 0.6]
+            height_levels = [0.1, 0.5]
             colors = ['blue', 'green', 'brown']
             terrain_colors = np.zeros(terrain.shape + (3,))
             
