@@ -1,7 +1,7 @@
 # Fractal landscape
 Aplikace vytváří náhodně generovaný terén. Můžeme si vybrat mezi 2D a 3D zobrazením, nastavit počet iterací (které určují detailnost terénu) a drsnost, která ovlivňuje, jak moc členitý bude výsledný terén.
 
-## Jak to funguje
+## Princip generování
 
 Aplikace používá algoritmus "Midpoint Displacement" (přesouvání středového bodu), což je jednoduchá, ale efektivní metoda pro generování realisticky vypadajících přírodních útvarů:
 
