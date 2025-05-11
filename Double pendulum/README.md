@@ -57,6 +57,9 @@ Program používá modul `FuncAnimation` z knihovny Matplotlib pro vytvoření p
 - Červená čára zobrazuje trajektorii druhého závaží za poslední sekundu
 - Text v levém horním rohu ukazuje aktuální čas simulace
 
+## Ukázka výstupu
+![](/Double%20pendulum/screens/screenshot.PNG)
+
 
 ## **Použití**
 ```python
