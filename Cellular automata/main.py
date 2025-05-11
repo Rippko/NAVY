@@ -27,12 +27,10 @@ class ForestFire:
     def initialize_forest(self, add_initial_fires=False):
         """Inicializuje les s danou hustotou stromů"""
         self.grid = np.zeros((self.height, self.width), dtype=int)
-        # Efektivnější způsob inicializace s využitím náhodnosti Numpy
         random_values = np.random.random((self.height, self.width))
         self.grid = np.where(random_values < self.density, self.TREE, self.EMPTY)
 
         if add_initial_fires:
-            # Přidání počátečních požárů
             for _ in range(3):
                 i, j = np.random.randint(0, self.height), np.random.randint(0, self.width)
                 if self.grid[i, j] == self.TREE:
@@ -122,7 +120,6 @@ class ForestFireSimulatorGUI:
         self.root.title("Simulátor lesního požáru")
         self.root.geometry("1000x600")
         
-        # Parametry simulace
         self.width = 100
         self.height = 100
         self.density = 0.5
@@ -133,7 +130,6 @@ class ForestFireSimulatorGUI:
         self.use_moore = False
         self.running = False
         
-        # Vytvoření simulace
         self.simulator = ForestFire(
             width=self.width, 
             height=self.height, 
@@ -158,7 +154,7 @@ class ForestFireSimulatorGUI:
         main_frame = ttk.Frame(self.root)
         main_frame.pack(fill=tk.BOTH, expand=True)
         
-        # Rozdělení na hlavní rámce
+        # Rozdělení na levý a pravý panel
         self.control_frame = ttk.Frame(main_frame, padding="10", width=310)
         self.control_frame.pack(side=tk.LEFT, fill=tk.Y, padx=10, pady=10)
         self.control_frame.pack_propagate(False)
@@ -170,7 +166,6 @@ class ForestFireSimulatorGUI:
         self.stat_frame = ttk.Frame(self.control_frame, padding="5")
         self.stat_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
         
-        # Vytvoření sliderů pro parametry
         self.create_slider("Hustota lesa:", 0.0, 1.0, self.density, self.update_density, format_func=lambda x: f"{x:.2f}")
         self.create_slider("Pravděpodobnost růstu:", 0.0, 0.2, self.growth_prob, self.update_growth_prob, format_func=lambda x: f"{x:.3f}")
         self.create_slider("Pravděpodobnost vznícení:", 0.0, 0.01, self.ignition_prob, self.update_ignition_prob, format_func=lambda x: f"{x:.4f}")
@@ -210,7 +205,6 @@ class ForestFireSimulatorGUI:
         )
         self.stats_label.pack(anchor=tk.W, pady=5)
         
-        # Nastavení grafu
         self.setup_plot()
         self.update_stats()
     
