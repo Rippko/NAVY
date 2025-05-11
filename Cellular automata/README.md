@@ -139,7 +139,7 @@ Simulaci lze upravit pomocí těchto parametrů:
 ## Ukázky GUI a výstupu
 
 ### Grafické uživatelské rozhraní
-![GUI simulátoru](screens/screenshot.png)
+![GUI simulátoru](screens/screenshot.PNG)
 
 ### Animace simulace lesního požáru
 ![Simulace lesního požáru](screens/forest_fire_simulation.gif)
